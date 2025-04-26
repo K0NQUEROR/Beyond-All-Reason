@@ -1,3 +1,5 @@
+local widget = widget ---@type Widget
+
 function widget:GetInfo()
 	return {
 		name = "Save Game Menu",
@@ -209,6 +211,10 @@ function widget:TextCommand(msg)
 		Spring.Echo("Trying to save:", msg)
 		local savefilename = string.sub(msg, 10)
 		SaveGame(savefilename, savefilename, true)
+
+		if Spring.GetMenuName and string.find(string.lower(Spring.GetMenuName()), 'chobby') ~= nil then
+			Spring.SendLuaMenuMsg("gameSaved")
+		end
 	end
 end
 

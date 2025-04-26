@@ -1,4 +1,6 @@
 --------------------------------------------------------------------------------
+local widget = widget ---@type Widget
+
 function widget:GetInfo()
 	return {
 		name = "LUPS Orb GL4",
@@ -62,10 +64,42 @@ local corafusShieldSphere = table.merge(defaults, {
 	--colormap2 = { {0.2, 0.2, 1, 0.7},{0.2, 0.2, 1, 0.75},{0.2, 0.2, 1, 0.75},{0.2, 0.2, 1, 0.7} },
 })
 
+local corafust3ShieldSphere = table.merge(defaults, {
+	pos = { 0, 120, 0 },
+	size = 64,
+	light = 8,
+	--colormap1 = { {0.9, 0.9, 1, 0.75},{0.9, 0.9, 1, 1.0},{0.9, 0.9, 1, 1.0},{0.9, 0.9, 1, 0.75} },
+	--colormap2 = { {0.2, 0.2, 1, 0.7},{0.2, 0.2, 1, 0.75},{0.2, 0.2, 1, 0.75},{0.2, 0.2, 1, 0.7} },
+})
+
 local armafusShieldSphere = table.merge(defaults, {
 	pos = { 0, 60, 0 },
 	size = 28,
 	light = 4.25,
+	--colormap1 = { {0.9, 0.9, 1, 0.75},{0.9, 0.9, 1, 1.0},{0.9, 0.9, 1, 1.0},{0.9, 0.9, 1, 0.75} },
+	--colormap2 = { {0.2, 0.2, 1, 0.7},{0.2, 0.2, 1, 0.75},{0.2, 0.2, 1, 0.75},{0.2, 0.2, 1, 0.7} },
+})
+
+local armafust3ShieldSphere = table.merge(defaults, {
+	pos = { 0, 120, 0 },
+	size = 56,
+	light = 8.5,
+	--colormap1 = { {0.9, 0.9, 1, 0.75},{0.9, 0.9, 1, 1.0},{0.9, 0.9, 1, 1.0},{0.9, 0.9, 1, 0.75} },
+	--colormap2 = { {0.2, 0.2, 1, 0.7},{0.2, 0.2, 1, 0.75},{0.2, 0.2, 1, 0.75},{0.2, 0.2, 1, 0.7} },
+})
+
+local legafusShieldSphere = table.merge(defaults, {
+	pos = { 0, 60, 0 },
+	size = 36,
+	light = 4.25,
+	--colormap1 = { {0.9, 0.9, 1, 0.75},{0.9, 0.9, 1, 1.0},{0.9, 0.9, 1, 1.0},{0.9, 0.9, 1, 0.75} },
+	--colormap2 = { {0.2, 0.2, 1, 0.7},{0.2, 0.2, 1, 0.75},{0.2, 0.2, 1, 0.75},{0.2, 0.2, 1, 0.7} },
+})
+
+local legafust3ShieldSphere = table.merge(defaults, {
+	pos = { 0, 120, 0 },
+	size = 72,
+	light = 8.5,
 	--colormap1 = { {0.9, 0.9, 1, 0.75},{0.9, 0.9, 1, 1.0},{0.9, 0.9, 1, 1.0},{0.9, 0.9, 1, 0.75} },
 	--colormap2 = { {0.2, 0.2, 1, 0.7},{0.2, 0.2, 1, 0.75},{0.2, 0.2, 1, 0.75},{0.2, 0.2, 1, 0.7} },
 })
@@ -78,9 +112,26 @@ local corfusShieldSphere = table.merge(defaults, {
 	--colormap2 = { {0.2, 0.6, 0.2, 0.4},{0.2, 0.6, 0.2, 0.45},{0.2, 0.6, 0.2, 0.45},{0.2, 0.6, 0.2, 0.4} },
 })
 
+local legfusShieldSphere = table.merge(defaults, {
+	pos = { 0, 10, 0 },
+	size = 23,
+	light = 3.25,
+	--colormap1 = { {0.9, 0.9, 1, 0.75},{0.9, 0.9, 1, 1.0},{0.9, 0.9, 1, 1.0},{0.9, 0.9, 1, 0.75} },
+	--colormap2 = { {0.2, 0.6, 0.2, 0.4},{0.2, 0.6, 0.2, 0.45},{0.2, 0.6, 0.2, 0.45},{0.2, 0.6, 0.2, 0.4} },
+})
+
+
 local corgateShieldSphere = table.merge(defaults, {
 	pos = { 0, 42, 0 },
 	size = 11,
+	colormap1 = { { 0.9, 0.9, 1, 0.75 }, { 0.9, 0.9, 1, 1.0 }, { 0.9, 0.9, 1, 1.0 }, { 0.9, 0.9, 1, 0.75 } },
+	colormap2 = { { 0.2, 0.6, 0.2, 0.4 }, { 0.2, 0.6, 0.2, 0.45 }, { 0.2, 0.6, 0.2, 0.45 }, { 0.2, 0.6, 0.2, 0.4 } },
+	isShield = true,
+})
+
+local corgatet3ShieldSphere = table.merge(defaults, {
+	pos = { 0, 75, -1 },
+	size = 18,
 	colormap1 = { { 0.9, 0.9, 1, 0.75 }, { 0.9, 0.9, 1, 1.0 }, { 0.9, 0.9, 1, 1.0 }, { 0.9, 0.9, 1, 0.75 } },
 	colormap2 = { { 0.2, 0.6, 0.2, 0.4 }, { 0.2, 0.6, 0.2, 0.45 }, { 0.2, 0.6, 0.2, 0.45 }, { 0.2, 0.6, 0.2, 0.4 } },
 	isShield = true,
@@ -108,6 +159,29 @@ local armgateShieldSphere = table.merge(defaults, {
 	isShield = true, 
 })
 
+local armgatet3ShieldSphere = table.merge(defaults, {
+	pos = { 0, 42, -6 },
+	size = 20,
+	colormap1 = { { 0.9, 0.9, 1, 0.75 }, { 0.9, 0.9, 1, 1.0 }, { 0.9, 0.9, 1, 1.0 }, { 0.9, 0.9, 1, 0.75 } },
+	colormap2 = { { 0.2, 0.6, 0.2, 0.4 }, { 0.2, 0.6, 0.2, 0.45 }, { 0.2, 0.6, 0.2, 0.45 }, { 0.2, 0.6, 0.2, 0.4 } },
+	isShield = true, 
+})
+local leggatet3ShieldSphere = table.merge(defaults, {
+	pos = { 0, 45, 0 },
+	size = 18,
+	colormap1 = { { 0.9, 0.9, 1, 0.75 }, { 0.9, 0.9, 1, 1.0 }, { 0.9, 0.9, 1, 1.0 }, { 0.9, 0.9, 1, 0.75 } },
+	colormap2 = { { 0.2, 0.6, 0.2, 0.4 }, { 0.2, 0.6, 0.2, 0.45 }, { 0.2, 0.6, 0.2, 0.45 }, { 0.2, 0.6, 0.2, 0.4 } },
+	isShield = true, 
+})
+
+local legdeflectorShieldSphere = table.merge(defaults, {
+	pos = { 0, 21, 0 },
+	size = 12,
+	colormap1 = { { 0.9, 0.9, 1, 0.75 }, { 0.9, 0.9, 1, 1.0 }, { 0.9, 0.9, 1, 1.0 }, { 0.9, 0.9, 1, 0.75 } },
+	colormap2 = { { 0.2, 0.6, 0.2, 0.4 }, { 0.2, 0.6, 0.2, 0.45 }, { 0.2, 0.6, 0.2, 0.45 }, { 0.2, 0.6, 0.2, 0.4 } },
+	isShield = true,
+})
+
 local UnitEffects = {
 	["armjuno"] = {
 		{ class = 'ShieldSphere', options = armjunoShieldSphere },
@@ -127,9 +201,29 @@ local UnitEffects = {
 		{ class = 'ShieldSphere', options = corfusShieldSphere },
 		{ class = 'ShieldJitter', options = { life = math.huge, pos = { 0, 50, 0 }, size = 23.5, precision = 22, repeatEffect = true } },
 	},
+	["legfus"] = {
+		{ class = 'ShieldSphere', options = legfusShieldSphere },
+		{ class = 'ShieldJitter', options = { life = math.huge, pos = { 0, 19, 0 }, size = 23.5, precision = 22, repeatEffect = true } },
+	},
 	["armafus"] = {
 		{ class = 'ShieldSphere', options = armafusShieldSphere },
 		{ class = 'ShieldJitter', options = { layer = -16, life = math.huge, pos = { 0, 60, 0 }, size = 28.5, precision = 22, repeatEffect = true } },
+	},
+	["legafus"] = {
+		{ class = 'ShieldSphere', options = legafusShieldSphere },
+		{ class = 'ShieldJitter', options = { layer = -16, life = math.huge, pos = { 0, 60, 0 }, size = 38.5, precision = 22, repeatEffect = true } },
+	},
+	["armafust3"] = {
+		{ class = 'ShieldSphere', options = armafust3ShieldSphere },
+		{ class = 'ShieldJitter', options = { layer = -16, life = math.huge, pos = { 0, 120, 0 }, size = 57, precision = 22, repeatEffect = true } },
+	},
+	["corafust3"] = {
+		{ class = 'ShieldSphere', options = corafust3ShieldSphere },
+		{ class = 'ShieldJitter', options = { layer = -16, life = math.huge, pos = { 0, 120, 0 }, size = 65, precision = 22, repeatEffect = true } },
+	},
+	["legafust3"] = {
+		{ class = 'ShieldSphere', options = legafust3ShieldSphere },
+		{ class = 'ShieldJitter', options = { layer = -16, life = math.huge, pos = { 0, 120, 0 }, size = 77, precision = 22, repeatEffect = true } },
 	},
 	["resourcecheat"] = {
 		{ class = 'ShieldSphere', options = armafusShieldSphere },
@@ -138,6 +232,12 @@ local UnitEffects = {
 	["corgate"] = {
 		{ class = 'ShieldJitter', options = { delay = 0, life = math.huge, pos = { 0, 42, 0 }, size = 12, precision = 22, repeatEffect = true , isShiedl } },
 		{ class = 'ShieldSphere', options = corgateShieldSphere },
+		--{class='ShieldJitter', options={delay=0,life=math.huge, pos={0,42,0.0}, size=555, precision=0, strength= 0.001, repeatEffect=true}},
+		--{class='ShieldJitter',options={life=math.huge, pos={0,42,0}, size=20, precision=2, repeatEffect=true}},
+	},
+	["corgatet3"] = {
+		{ class = 'ShieldJitter', options = { delay = 0, life = math.huge, pos = { 0, 75, 0 }, size = 18, precision = 22, repeatEffect = true , isShiedl } },
+		{ class = 'ShieldSphere', options = corgatet3ShieldSphere },
 		--{class='ShieldJitter', options={delay=0,life=math.huge, pos={0,42,0.0}, size=555, precision=0, strength= 0.001, repeatEffect=true}},
 		--{class='ShieldJitter',options={life=math.huge, pos={0,42,0}, size=20, precision=2, repeatEffect=true}},
 	},
@@ -152,10 +252,25 @@ local UnitEffects = {
 		{ class = 'ShieldSphere', options = armgateShieldSphere },
 		--{class='ShieldJitter', options={delay=0,life=math.huge, pos={0,23.5,-5}, size=555, precision=0, strength=0.001, repeatEffect=true}},
 	},
+	["armgatet3"] = {
+		{ class = 'ShieldJitter', options = { delay = 0, life = math.huge, pos = { 0, 37, -5 }, size = 21, precision = 22, repeatEffect = true } },
+		{ class = 'ShieldSphere', options = armgatet3ShieldSphere },
+		--{class='ShieldJitter', options={delay=0,life=math.huge, pos={0,23.5,-5}, size=555, precision=0, strength=0.001, repeatEffect=true}},
+	},
+	["leggatet3"] = {
+		{ class = 'ShieldJitter', options = { delay = 0, life = math.huge, pos = { 0, 45, 0 }, size = 20, precision = 22, repeatEffect = true } },
+		{ class = 'ShieldSphere', options = leggatet3ShieldSphere },
+		--{class='ShieldJitter', options={delay=0,life=math.huge, pos={0,23.5,-5}, size=555, precision=0, strength=0.001, repeatEffect=true}},
+	},
 	["armfgate"] = {
 		{ class = 'ShieldJitter', options = { delay = 0, life = math.huge, pos = { 0, 25, 0 }, size = 15, precision = 22, repeatEffect = true } },
 		{ class = 'ShieldSphere', options = table.merge(armgateShieldSphere, { pos = { 0, 25, 0 } }) },
 		--{class='ShieldJitter', options={delay=0,life=math.huge, pos={0,25,0}, size=555, precision=0, strength= 0.001, repeatEffect=true}},
+	},
+	["legdeflector"] = {
+		{ class = 'ShieldJitter', options = { delay = 0, life = math.huge, pos = { 0, 20, -5 }, size = 15, precision = 22, repeatEffect = true } },
+		{ class = 'ShieldSphere', options = legdeflectorShieldSphere },
+		--{class='ShieldJitter', options={delay=0,life=math.huge, pos={0,23.5,-5}, size=555, precision=0, strength=0.001, repeatEffect=true}},
 	},
 	["lootboxbronze"] = {
 		{ class = 'ShieldSphere', options = table.merge(corfusShieldSphere,  {pos = { 0, 34, 0 }, size = 10} ) },
@@ -239,7 +354,7 @@ local sphereVBO = nil
 local orbVBO = nil
 local orbShader = nil
 
-local luaShaderDir = "LuaUI/Widgets/Include/"
+local luaShaderDir = "LuaUI/Include/"
 local LuaShader = VFS.Include(luaShaderDir.."LuaShader.lua")
 VFS.Include(luaShaderDir.."instancevbotable.lua")
 
@@ -314,9 +429,14 @@ void main()
 		
 	vec4 vertexWorldPos = vec4(1);
 	vec3 flippedPos = vec3(1,-1,1) * position.xzy;
-
+	
 	
 	float radius = 0.99 * posrad.w;
+	float startFrame = margin_teamID_shield_technique.x;
+	//float lifeScale = clamp(((timeInfo.x + timeInfo.w) - startFrame) / 100.0, 0.001, 1.0);
+	float lifeScale = 1.0 - exp(-0.10 * ((timeInfo.x + timeInfo.w) - startFrame));
+	radius *= lifeScale;
+	radius += (sin(timeInfo.z)) - 1.0;
 	
 	vertexWorldPos.xyz = rotY * ( flippedPos * (radius) + posrad.xyz + vec3(0,0,0) ) + modelWorldPos;
 	if (reflectionPass < 0.5){
@@ -336,7 +456,7 @@ void main()
 	//vec3 vertex = vec3(gl_ModelViewMatrix * gl_Vertex);
 	color1_vs.rgb = camToWorldPos.xyz;
 	float angle = dot(normal,camToWorldPos); //*inversesqrt( dot(normal,normal)*dot(position,position) ); //dot(norm(n),norm(v))
-	opac_vs = pow( abs( angle ) , margin_teamID_shield_technique.x);
+	opac_vs = pow( abs( angle ) , 1.0);
 	//opac_vs = 1.0;
 	//color1_vs.rgb = vec3(angle);
 	
@@ -688,8 +808,13 @@ end
 --------------------------------------------------------------------------------
 -- Widget Interface
 --------------------------------------------------------------------------------
+-- Note that we rely on VisibleUnitRemoved triggering right before VisibleUnitAdded on UnitFinished 
+local shieldFinishFrames = {} -- unitID to gameframe
+
+
 local lastDrawFrame = -1
 function widget:DrawWorldPreParticles() 
+	if next(shieldFinishFrames) then shieldFinishFrames = {} end
 	-- NOTE: This is called TWICE per draw frame, once before water and once after, even if no water is present. 
 	-- If water is present on the map, then it gets called again between the two for the refraction pass
 	-- Solution is to draw it only on the first call, and draw reflections from widget:DrawWorldReflection
@@ -719,7 +844,9 @@ function widget:Initialize()
 	end
 end
 
+
 function widget:VisibleUnitAdded(unitID, unitDefID, unitTeam, noupload)
+	--Spring.Echo("widget:VisibleUnitAdded",unitID, unitDefID, unitTeam, noupload,shieldFinishFrames[unitID])
 	if unitDefID and orbUnitDefs[unitDefID] then 
 
 		unitTeam = unitTeam or spGetUnitTeam(unitID)
@@ -728,8 +855,10 @@ function widget:VisibleUnitAdded(unitID, unitDefID, unitTeam, noupload)
 		if buildProgress < 1 then return end
 
 		local instanceCache = orbUnitDefs[unitDefID]
+		instanceCache[5] = shieldFinishFrames[unitID] or 0
 		instanceCache[6] = unitTeam
 		--instanceCache[7] = Spring.GetGameFrame()
+		shieldFinishFrames[unitID] = nil
 		
 		--Spring.Echo("Added lups orb")
 		pushElementInstance(orbVBO,
@@ -753,6 +882,7 @@ function widget:VisibleUnitsChanged(extVisibleUnits, extNumVisibleUnits)
 end
 
 function widget:VisibleUnitRemoved(unitID)
+	shieldFinishFrames[unitID] = Spring.GetGameFrame()
 	if orbVBO.instanceIDtoIndex[unitID] then
 		popElementInstance(orbVBO, unitID)
 	end

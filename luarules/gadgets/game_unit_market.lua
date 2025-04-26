@@ -3,6 +3,8 @@ if not Spring.GetModOptions().unit_market then
 end
 -- This handles fair transfer of resource for unit if the modoption is enabled, otherwise it just self removes.
 
+local gadget = gadget ---@type Gadget
+
 function gadget:GetInfo()
     return {
         name    = "Unit Market - Backend",
@@ -297,12 +299,11 @@ function gadget:UnitFinished(unitID, unitDefID, teamID, builderID)
 end
 
 function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions, cmdTag, playerID, fromSynced, fromLua)
-	if (cmdID == CMD_SELL_UNIT) then
-        local unitDef = UnitDefs[unitDefID]
-        if unitDef then
-            local price = unitDef.metalCost
-            setUnitOnSale(unitID, price, true)
-        end
+	-- accepts: CMD_SELL_UNIT
+	local unitDef = UnitDefs[unitDefID]
+	if unitDef then
+		local price = unitDef.metalCost
+		setUnitOnSale(unitID, price, true)
 	end
 	return true
 end
@@ -312,6 +313,7 @@ local function isTeamSaving(teamID)
 end
 
 function gadget:Initialize()
+    gadgetHandler:RegisterAllowCommand(CMD_SELL_UNIT)
     local teamList = spGetTeamList()
 	for _, teamID in ipairs(teamList) do
         TeamIsSaving[teamID] = false

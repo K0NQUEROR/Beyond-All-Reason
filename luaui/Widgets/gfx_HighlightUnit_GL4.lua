@@ -1,3 +1,5 @@
+local widget = widget ---@type Widget
+
 function widget:GetInfo()
   return {
     name      = "HighlightUnit API GL4",
@@ -11,7 +13,9 @@ function widget:GetInfo()
   }
 end
 
-local luaShaderDir = "LuaUI/Widgets/Include/"
+-- Notes: this API can be considered mildly deprecated, as CUS GL4 now handles the major consumers of this API.
+
+local luaShaderDir = "LuaUI/Include/"
 local LuaShader = VFS.Include(luaShaderDir.."LuaShader.lua")
 VFS.Include(luaShaderDir.."instancevboidtable.lua")
 
@@ -344,8 +348,6 @@ function widget:Initialize()
 	highlightUnitVBOTable.vertexVBO = vertVBO
 	highlightUnitVBOTable.debugZombies = false
 
-	local unitIDs = Spring.GetAllUnits()
-	local featuresIDs = Spring.GetAllFeatures()
 
 	local engineUniformBufferDefs = LuaShader.GetEngineUniformBufferDefs()
 	vsSrc = vsSrc:gsub("//__ENGINEUNIFORMBUFFERDEFS__", engineUniformBufferDefs)

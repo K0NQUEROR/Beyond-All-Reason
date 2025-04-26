@@ -1,5 +1,7 @@
 include("keysym.h.lua")
 
+local widget = widget ---@type Widget
+
 function widget:GetInfo()
 	return {
 		name = "Transport AI",
@@ -20,7 +22,7 @@ local CONST_TRANSPORT_PICKUPTIME = 9 -- how long (in seconds) does transport lan
 local CONST_PRIORITY_BENEFIT = 10000 -- how much more important are priority transfers
 local CONST_BENEFIT_LIMIT = 5  -- what is the lowest benefit treshold to use transport (in sec difference with transport against without it)
 local CONST_TRANSPORT_STOPDISTANCE = 150 -- how close by has transport be to stop the unit
-local CONST_UNLOAD_RADIUS = 200 -- how big is the radious for unload command for factory transports
+local CONST_UNLOAD_RADIUS = 400 -- how big is the radious for unload command for factory transports
 
 local idleTransports = {} -- list of idle transports key = id, value = {defid}
 local waitingUnits = {} -- list of units waiting for traqnsport - key = unitID, {unit state, unitDef, factory}
@@ -43,7 +45,7 @@ local GetUnitPosition = Spring.GetUnitPosition
 local GetUnitDefID = Spring.GetUnitDefID
 local Echo = Spring.Echo
 local GetPlayerInfo = Spring.GetPlayerInfo
-local GetCommandQueue = Spring.GetCommandQueue
+local GetUnitCommands = Spring.GetUnitCommands
 local GetUnitSeparation = Spring.GetUnitSeparation
 local GiveOrderToUnit = Spring.GiveOrderToUnit
 local GetUnitDefDimensions = Spring.GetUnitDefDimensions
@@ -89,7 +91,7 @@ for uDefID, uDef in pairs(UnitDefs) do
 end
 
 function IsEmbarkCommand(unitID)
-	local queue = GetCommandQueue(unitID, 20);
+	local queue = GetUnitCommands(unitID, 20);
 	if queue ~= nil and #queue >= 1 and IsEmbark(queue[1]) then
 		return true
 	end
@@ -111,7 +113,7 @@ function IsDisembark(cmd)
 end
 
 function IsWaitCommand(unitID)
-	local queue = GetCommandQueue(unitID, 20);
+	local queue = GetUnitCommands(unitID, 20);
 	if queue ~= nil and queue[1].id == CMD.WAIT and not queue[1].options.alt then
 		return true
 	end
@@ -119,7 +121,7 @@ function IsWaitCommand(unitID)
 end
 
 --function IsIdle(unitID)
---  local queue = GetCommandQueue(unitID,20)
+--  local queue = GetUnitCommands(unitID,20)
 --  if (queue == nil or #queue==0) then
 --    return true
 --  else
@@ -307,7 +309,7 @@ function widget:UnitFromFactory(unitID, unitDefID, unitTeam, factID, factDefID, 
 		end
 		if isTransportable[unitDefID] and not userOrders then
 			--      Echo ("new unit from factory "..unitID)
-			local commands = GetCommandQueue(unitID, 20)
+			local commands = GetUnitCommands(unitID, 20)
 			for i = 1, #commands do
 				local v = commands[i]
 				if IsEmbark(v) then
@@ -410,7 +412,7 @@ function widget:UnitLoaded(unitID, unitDefID, teamID, transportID)
 		return
 	end
 
-	local queue = GetCommandQueue(unitID, 20);
+	local queue = GetUnitCommands(unitID, 20);
 	if queue == nil then
 		return
 	end
@@ -488,7 +490,7 @@ function widget:UnitUnloaded(unitID, unitDefID, teamID, transportID)
 		GiveOrderToUnit(unitID, x[1], x[2], x[3])
 	end
 	storedQueue[unitID] = nil
-	local cmdID = Spring.GetUnitCurrentCommand(unitID, 1) --GetCommandQueue(unitID,2) -- not sure if bug or that this old code actually meant to get the 2nd cmd in queue
+	local cmdID = Spring.GetUnitCurrentCommand(unitID, 1) --GetUnitCommands(unitID,2) -- not sure if bug or that this old code actually meant to get the 2nd cmd in queue
 	if cmdID and cmdID == CMD.WAIT then
 		GiveOrderToUnit(unitID, CMD.WAIT, {}, 0)  -- workaround: clears wait order if STOP fails to do so
 	end
@@ -621,7 +623,7 @@ function GetPathLength(unitID)
 	end
 
 	local d = 0
-	local queue = GetCommandQueue(unitID, 20);
+	local queue = GetUnitCommands(unitID, 20);
 	if queue == nil then
 		return 0
 	end

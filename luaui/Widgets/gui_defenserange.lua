@@ -2,6 +2,8 @@ include("keysym.h.lua")
 
 local versionNumber = "6.32"
 
+local widget = widget ---@type Widget
+
 function widget:GetInfo()
 	return {
 		name      = "Defense Range",
@@ -115,6 +117,9 @@ modConfig["BYAR"]["unitList"] = {
 	leglraa = { weapons = { 2 } }, -- t2 aa railgun
 	
 	legtl = { weapons = { 1 } }, --torp launcher
+
+	legabm = { weapons = { 3 } },
+	legrampart = { weapons = { 3 }},
 
 	-- SCAVENGERS
 	scavbeacon_t1_scav = { weapons = { 1 } },
@@ -400,7 +405,6 @@ function UnitDetected( unitID, allyTeam, teamId )
 	end
 	local unitDefID = spGetUnitDefID(unitID)
 
-	local key = tostring(unitID)
 	local x, y, z = spGetUnitPosition(unitID)
 
 	local range = 0

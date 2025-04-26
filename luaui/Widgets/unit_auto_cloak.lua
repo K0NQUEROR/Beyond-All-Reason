@@ -1,3 +1,5 @@
+local widget = widget ---@type Widget
+
 function widget:GetInfo()
 	return {
 		name      = "Auto Cloak Units",
@@ -26,6 +28,7 @@ local unitdefConfigNames = {
 	['armckfus'] = true,
 	['armspy'] = true,
 	['corspy'] = true,
+	['corphantom'] = true,
 }
 -- convert unitname -> unitDefID
 local unitdefConfig = {}
@@ -102,7 +105,7 @@ function widget:UnitFinished(unitID, unitDefID, unitTeam)
 	cloakActive(unitID, unitDefID)
 end
 
-function widget:UnitDestroyed(unitID, unitDefID, unitTeam)
+function widget:UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam, weaponDefID)
 	if cloakunits[unitID] then
 		cloakunits[unitID] = nil
 	end
