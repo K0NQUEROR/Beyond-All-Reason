@@ -11,7 +11,7 @@ return {
 		buildtime = 150000,
 		canfly = true,
 		canmove = true,
-		category = "ALL WEAPON VTOL NOTSUB NOTHOVER T4AIR",
+		category = "T4AIR",
 		collide = true,
 		collisionvolumeoffsets = "0 10 0",
 		collisionvolumescales = "80 51 120",
@@ -80,7 +80,7 @@ return {
 			},
 		},
 		weapondefs = {
-		
+
 			kmaw = { -- fire based with trailing AoE on particles (or not, atm)
 				accuracy = 0,
 				areaofeffect = 128,
@@ -97,12 +97,10 @@ return {
 				cratermult = 0,
 				edgeeffectiveness = 0.01,
 				explosiongenerator = "custom:burnthermite",
-				groundbounce = true,
 				bounceSlip = 1.0,
 				firestarter = 100,
 				firesubmersed = false,
 				flameGFXTime = 1,
-				impulseboost = 0,
 				impulsefactor = 0,
 				intensity = 0.85,
 				name = "Demon's Maw; Heavy long range AoE flamethrower",
@@ -124,13 +122,12 @@ return {
 				weapontype = "Flame",
 				weaponvelocity = 500,
 				damage = {
-					default = 40,--100,
+					default = 40,
 					subs = 10,
-				}--,customparams = { single_hit_multi = 'true' },
+				}
 			},
-		
+
 			edragon_missile = {
-			
 				areaofeffect = 16,
 				avoidfeature = false,
 				burnblow = true,
@@ -143,7 +140,6 @@ return {
 				explosiongenerator = "custom:genericshellexplosion-medium-aa",
 				firestarter = 72,
 				flighttime = 2.5,
-				impulseboost = 0.123,
 				impulsefactor = 0.123,
 				model = "cormissile.s3o",
 				name = "Advanced antiair rapid missile launcher",
@@ -176,7 +172,7 @@ return {
 					bombers = 400,
 					fighters = 400,
 					vtol = 400,
-				},			
+				},
 			},
 			krowbosslaser = {
 				areaofeffect = 8,
@@ -192,7 +188,6 @@ return {
 				energypershot = 50,
 				explosiongenerator = "custom:laserhit-large-green",
 				firestarter = 90,
-				impulseboost = 0,
 				impulsefactor = 0,
 				laserflaresize = 6.05,
 				name = "Ultra HighEnergyLaser",
@@ -232,7 +227,6 @@ return {
 				energypershot = 100,
 				explosiongenerator = "custom:genericshellexplosion-medium-beam",
 				firestarter = 90,
-				impulseboost = 0,
 				impulsefactor = 0,
 				laserflaresize = 7.7,
 				name = "Ultra High energy a2g laser",
@@ -246,7 +240,6 @@ return {
 				soundstart = "lasrhvy3",
 				soundstartvolume = 35,
 				soundtrigger = 1,
-				targetmoveerror = 0.15,
 				thickness = 6.7,
 				tolerance = 10000,
 				turret = true,
